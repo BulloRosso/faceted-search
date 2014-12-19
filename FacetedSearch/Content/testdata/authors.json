@@ -1,0 +1,25 @@
+﻿[
+    {
+        Id:  "auth-1",
+        DisplayName: "Fred Fryer",
+        EMail: "fred@demo.com",
+        CountryCode: "US",
+        TopicCodes: [ "FS", "LS" ]
+    },
+
+    {
+        Id:  "auth-2",
+        DisplayName: "Susanne Delmer",
+        EMail: "sue@demo.com",
+        CountryCode: "DE",
+        TopicCodes: [ "FS", "LS" ]
+    },
+
+    {
+        Id:  "auth-3",
+        DisplayName: "Armand Heldens",
+        EMail: "armand@demo.com",
+        CountryCode: "FR",
+        TopicCodes: [ "IT", "PR" ]
+    }
+]

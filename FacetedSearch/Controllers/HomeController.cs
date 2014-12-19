@@ -15,5 +15,15 @@ namespace FacetedSearch.Controllers
             return View();
         }
 
+        public ActionResult SearchAdaptive(string SearchTerm)
+        {
+            return View();
+        }
+
+        public ActionResult SearchCheckboxed(string SearchTerm)
+        {
+            return View();
+        }
+
     }
 }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FacetedSearch.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -16,9 +19,41 @@ namespace FacetedSearch
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            // WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Create elasticsearch index
+            SetUpDemoData();
+        }
+
+        /// <summary>
+        /// Read demo data from JSON-Files in /content/ and create elasticsearch index from it
+        /// </summary>
+        private void SetUpDemoData()
+        {
+
+            string contentFileJSON = Server.MapPath("~/Content/testdata/");
+
+            // read Authors
+            //
+            using (StreamReader r = new StreamReader(contentFileJSON + "authors.json"))
+            {
+                string json = r.ReadToEnd();
+                List<BlogAuthor> items = JsonConvert.DeserializeObject<List<BlogAuthor>>(json);
+
+            }
+
+
+            // read articles
+            //
+            using (StreamReader r = new StreamReader(contentFileJSON + "articles.json"))
+            {
+                string json = r.ReadToEnd();
+                List<BlogArticle> items = JsonConvert.DeserializeObject<List<BlogArticle>>(json);
+
+            }
+
         }
     }
 }

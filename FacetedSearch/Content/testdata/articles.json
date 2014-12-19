@@ -1,0 +1,25 @@
+﻿[
+    {
+        Id:  "art-1",
+        BlogAuthorId: "auth-1",
+        LanguageCode: "en",
+        Title: "New colors for men fall 2014",
+        Teaser: "Pink is the new black for all trendy males who want to make a bold statement on the street this fall."
+    },
+
+    {
+        Id:  "art-2",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id:  "art-3",
+        BlogAuthorId: "auth-3",
+        LanguageCode: "fr",
+        Title: "New colors for men fall 2013",
+        Teaser: "Green is the new black for all trendy males who want to make a bold statement on the street this fall."
+    }
+]
