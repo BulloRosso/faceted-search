@@ -5,7 +5,8 @@
         LanguageCode: "en",
         Timestamp: "2014-09-03",
         Title: "New colors for men fall 2014",
-        Teaser: "Pink is the new black for all trendy males who want to make a bold statement on the street this fall."
+        Teaser: "Pink is the new black for all trendy males who want to make a bold statement on the street this fall.",
+        Topics:  ["Fashion"]
     },
 
     {
@@ -14,7 +15,8 @@
         LanguageCode: "de",
         Timestamp: "2014-08-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["IT"]
     },
 
     {
@@ -23,7 +25,8 @@
         LanguageCode: "fr",
         Timestamp: "2014-07-03",
         Title: "New colors for men fall 2013",
-        Teaser: "Green is the new black for all trendy males who want to make a bold statement on the street this fall."
+        Teaser: "Green is the new black for all trendy males who want to make a bold statement on the street this fall.",
+        Topics:  ["Geek", "IT"]
     },
 
     {
@@ -32,7 +35,8 @@
         LanguageCode: "de",
         Timestamp: "2014-06-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion"]
     },
 
     {
@@ -41,7 +45,8 @@
         LanguageCode: "de",
         Timestamp: "2014-05-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Geek"]
     },
 
     {
@@ -50,7 +55,8 @@
         LanguageCode: "de",
         Timestamp: "2014-04-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Social"]
     },
 
     {
@@ -59,7 +65,8 @@
         LanguageCode: "de",
         Timestamp: "2014-03-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Music", "Fashion"]
     },
 
     {
@@ -68,7 +75,8 @@
         LanguageCode: "de",
         Timestamp: "2014-02-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Social"]
     },
 
     {
@@ -77,7 +85,8 @@
         LanguageCode: "de",
         Timestamp: "2014-01-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Music"]
     },
 
     {
@@ -86,7 +95,8 @@
         LanguageCode: "de",
         Timestamp: "2013-12-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  []
     },
 
     {
@@ -95,7 +105,8 @@
         LanguageCode: "de",
         Timestamp: "2013-11-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Music", "Social"]
     },
 
     {
@@ -104,7 +115,8 @@
         LanguageCode: "de",
         Timestamp: "2013-10-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["IT", "Social"]
     },
 
     {
@@ -113,7 +125,8 @@
         LanguageCode: "de",
         Timestamp: "2013-09-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Geek"]
     },
 
     {
@@ -122,7 +135,8 @@
         LanguageCode: "de",
         Timestamp: "2013-08-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "IT"]
     },
 
     {
@@ -131,7 +145,8 @@
         LanguageCode: "it",
         Timestamp: "2014-07-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Music"]
     },
 
     {
@@ -140,7 +155,8 @@
         LanguageCode: "fr",
         Timestamp: "2013-06-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Social", "IT", "Music", "Geek"]
     },
 
     {
@@ -149,7 +165,8 @@
         LanguageCode: "de",
         Timestamp: "2013-05-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Music", "Geek"]
     },
 
     {
@@ -158,7 +175,8 @@
         LanguageCode: "en",
         Timestamp: "2013-04-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["IT", "Music", "Geek"]
     },
 
     {
@@ -167,7 +185,8 @@
         LanguageCode: "en",
         Timestamp: "2013-03-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Social"]
     },
     {
         Id: "art-20",
@@ -175,7 +194,8 @@
         LanguageCode: "de",
         Timestamp: "2013-02-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "IT", "Music"]
     },
     {
         Id: "art-21",
@@ -183,7 +203,8 @@
         LanguageCode: "de",
         Timestamp: "2013-01-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Social", "IT", "Music"]
     },
     {
         Id: "art-22",
@@ -191,7 +212,8 @@
         LanguageCode: "de",
         Timestamp: "2012-12-03",
         Title: "Neue Farben für Männer im Herbst",
-        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+        Teaser: "Blau ist die neue Trendfarbe im Herbst.",
+        Topics:  ["Fashion", "Music", "Geek"]
     }
 
 ]

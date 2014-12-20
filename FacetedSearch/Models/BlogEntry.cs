@@ -30,5 +30,10 @@ namespace FacetedSearch.Models
         /// Short abstract of the article
         /// </summary>
         public string Teaser { get; set; }
+
+        /// <summary>
+        /// Which topics does the blog post cover (e. g. "Fashion", "C#")?
+        /// </summary>
+        public List<string> Topics { get; set; }
     }
 }

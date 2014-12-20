@@ -125,6 +125,7 @@ namespace FacetedSearch.BusinessLogic
             Dictionary<string, string> fieldMappings = new Dictionary<string, string>()
             {
                 { "language", "languageCode"},
+                { "topics", "topics" }
             };
 
 
@@ -169,6 +170,7 @@ namespace FacetedSearch.BusinessLogic
 
                                              .Aggregations(a => a
                                                .Terms("language", o => o.Field(f => f.LanguageCode).Size(10))
+                                               .Terms("topics", o => o.Field(f => f.Topics).Size(10))
                                               )
                                              .Query(q => q
                                                  .Filtered(fq => fq
