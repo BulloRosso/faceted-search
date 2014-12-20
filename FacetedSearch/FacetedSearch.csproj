@@ -139,6 +139,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\elasticsearch-logo.png" />
     <Content Include="Content\img\overview.PNG" />
+    <Content Include="Content\img\sampleSearch.PNG" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

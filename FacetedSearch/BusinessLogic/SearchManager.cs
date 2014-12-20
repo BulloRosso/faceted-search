@@ -162,7 +162,7 @@ namespace FacetedSearch.BusinessLogic
             
             foreach (var strText in splitSearch)
             {
-                searchQueryList.Add(Query<BlogArticle>.Prefix("_all", strText)); // prefix finds incomplete words - use .Term for an exact match
+                searchQueryList.Add(Query<BlogArticle>.Prefix("_all", strText.ToLower())); // prefix finds incomplete words - use .Term for an exact match
             }
 
 
