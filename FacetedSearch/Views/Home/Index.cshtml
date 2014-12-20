@@ -5,11 +5,12 @@
 <div class="row">
     <div class="col-md-8">
 
+       
 
-        <h4 class="text-info"><i class="fa fa-search"></i> Start searching</h4>
+        <h4 class="text-info add-top"><i class="fa fa-search"></i> Start searching</h4>
         <p class="text-muted">
-            Demo data is about Blog articles and bloggers.
-            Compare the two different search experiences by entering some terms like 'fashion' or 'toby':
+            The demo use case we prepared for you is about Blog articles and bloggers.
+            Leve the search term empty to see all data in the index.
         </p>
 
         <div class="row">
@@ -46,7 +47,7 @@
 
         <h4 class="text-info" style="margin-top:40px;"><i class="fa fa-plus"></i> Add some data</h4>
         <p class="text-muted">
-            Add some documents to the index yourself:
+            Add some <a href="" class="btn btn-xs btn-default">Blog articles</a> or <a href="#" class="btn btn-xs btn-default">bloggers</a> to the index.
         </p>
 
     </div>
@@ -55,14 +56,28 @@
         <div class="panel panel-default" style="padding:10px;">
 
             <img src="@Url.Content("~/Content/img/elasticsearch-logo.png")" style="height:80px;margin-right:10px;float:left;" alt="Elasticsarch Logo" />
-            <strong>Elasticsearch &amp;<br /> ASP.NET MVC 4</strong>
+            <strong>Elasticsearch &amp;
+            <br /> Nest &amp;
+            <br /> ASP.NET MVC 4</strong>
+            
             <br style="clear:both;" />
             
-
         </div>
 
-        <div class="alert alert-info">
-            <strong><i class="fa fa-info-circle"></i> Demo data</strong><br /> is created in Global.asax. Delete the index with elasticsearch and restart the .NET application to recreate index.
+        <p>
+            <strong>Elasticsearch</strong> allows you to build a comprehensive search experience with less efforts than e.g. SOLR.
+            Using <strong>Nest's fluent interface</strong> you can cut down development time even further!
+        </p>
+        <p>
+            Use this project as a playground for your first steps with either Elasticsearch or Nest...
+        </p>
+
+
+        <div class="alert alert-info add-top">
+            <strong><i class="fa fa-info-circle"></i> Demo data</strong><br /> is defined in the content directory as JSON files.
+        
+            <a href="@Url.Action("ResetIndex")" class="btn btn-default btn-sm pull-right add-top" title="Clears all your additions to the index">Reset Index</a>
+            <br style="clear:both;" />
         </div>
     </div>
 </div>

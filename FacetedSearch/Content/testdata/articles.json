@@ -16,10 +16,160 @@
     },
 
     {
-        Id:  "art-3",
+        Id: "art-3",
         BlogAuthorId: "auth-3",
         LanguageCode: "fr",
         Title: "New colors for men fall 2013",
         Teaser: "Green is the new black for all trendy males who want to make a bold statement on the street this fall."
+    },
+
+    {
+        Id: "art-4",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-5",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-6",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-7",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-8",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-9",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-10",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-11",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-12",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-13",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-14",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-15",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-16",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-17",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-18",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+
+    {
+        Id: "art-19",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+    {
+        Id: "art-20",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+    {
+        Id: "art-21",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
+    },
+    {
+        Id: "art-22",
+        BlogAuthorId: "auth-2",
+        LanguageCode: "de",
+        Title: "Neue Farben für Männer im Herbst",
+        Teaser: "Blau ist die neue Trendfarbe im Herbst."
     }
+
 ]

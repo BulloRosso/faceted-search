@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FacetedSearch.Models;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace FacetedSearch.Controllers
 {
@@ -29,9 +31,58 @@ namespace FacetedSearch.Controllers
         /// <returns></returns>
         public ActionResult SearchAdaptive(string SearchTerm)
         {
-            SearchResultViewModel vm = BusinessLogic.SearchManager.SearchArticle(SearchTerm, 0, GetFilters(), PageSize, MaxResults);
+
+            // Pagination
+            //
+            int page = 0;
+            if (Request.Params["Page"] != null)
+            {
+                page = Convert.ToInt32(Request.Params["Page"]);
+            }
+
+            // elasticsearch 
+            //
+            SearchResultViewModel vm = BusinessLogic.SearchManager.SearchArticle(SearchTerm, page, GetFilters(), PageSize, MaxResults);
 
             return View(vm);
+        }
+
+        /// <summary>
+        /// Reset Index to start new
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ResetIndex()
+        {
+            BusinessLogic.SearchManager.ResetIndex();
+
+            string contentFileJSON = Server.MapPath("~/Content/testdata/");
+
+            // read Authors
+            //
+            using (StreamReader r = new StreamReader(contentFileJSON + "authors.json"))
+            {
+                string json = r.ReadToEnd();
+                List<BlogAuthor> items = JsonConvert.DeserializeObject<List<BlogAuthor>>(json);
+
+                // add to elasticsearch index
+                //
+                items.ForEach(i => BusinessLogic.SearchManager.Index(i));
+            }
+
+
+            // read articles
+            //
+            using (StreamReader r = new StreamReader(contentFileJSON + "articles.json"))
+            {
+                string json = r.ReadToEnd();
+                List<BlogArticle> items = JsonConvert.DeserializeObject<List<BlogArticle>>(json);
+
+                // add to elasticsearch index
+                //
+                items.ForEach(i => BusinessLogic.SearchManager.Index(i));
+            }
+
+            return Content("Index reset!");
         }
 
         /// <summary>
