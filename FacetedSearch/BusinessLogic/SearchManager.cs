@@ -133,7 +133,7 @@ namespace FacetedSearch.BusinessLogic
             {
                 if (!fieldMappings.ContainsKey(key))
                 {
-                    continue;
+                    continue; // ignore date range
                 }
 
 
@@ -145,11 +145,20 @@ namespace FacetedSearch.BusinessLogic
 
             }
 
+            List<QueryContainer> searchQueryList = new List<QueryContainer>();
+          
+            if (filters.ContainsKey("dateRange"))
+            {
+                searchQueryList.Add(Query<BlogArticle>.Range(r => r.OnField("timestamp")
+                                                                  .Greater(DateTime.Parse(filters["dateRange"])
+                                                                  .AddDays(1), "yyyy-MM-dd")));
+            }
+
             // if there are more than one word --> concat using AND 
             //
             string[] splitSearch = SearchTerm.Split(' ');
 
-            List<QueryContainer> searchQueryList = new List<QueryContainer>();
+            
             foreach (var strText in splitSearch)
             {
                 searchQueryList.Add(Query<BlogArticle>.Prefix("_all", strText)); // prefix finds incomplete words - use .Term for an exact match
@@ -163,9 +172,8 @@ namespace FacetedSearch.BusinessLogic
                                               )
                                              .Query(q => q
                                                  .Filtered(fq => fq
-                                                    .Query(sq => sq.Bool(b => b.Must(searchQueryList.ToArray())))
+                                                    .Query(sq => sq.Bool(b => b.Must(searchQueryList.ToArray())))                                                    
                                                     .Filter(f => f.And(termFilters.ToArray()))
-
                                                  )
                                              )
                                              .Highlight(h => h.PreTags("<span class='highlight'>")
