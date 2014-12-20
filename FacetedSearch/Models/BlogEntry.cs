@@ -9,6 +9,8 @@ namespace FacetedSearch.Models
     {
         public string Id { get; set; }
 
+        public DateTime Timestamp { get; set; }
+
         /// <summary>
         /// Blogger's id (ref)
         /// </summary>
