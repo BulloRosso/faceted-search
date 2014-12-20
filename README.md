@@ -1,4 +1,4 @@
-<h2>Faceted Search with Elasticsearch</h2>
+<h2>Faceted Search with Elasticsearch and C#/NEST</h2>
 
 <h3>What is this all about?</h3>
 
