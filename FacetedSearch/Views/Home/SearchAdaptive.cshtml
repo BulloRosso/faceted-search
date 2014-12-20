@@ -1,5 +1,47 @@
-﻿@{
-    ViewBag.Title = "SearchAdaptive";
+﻿@using FacetedSearch.Models
+@model SearchResultViewModel
+@{
+    ViewBag.Title = "Adaptive Facets - Faceted Search Demo";
+    ViewBag.NavId = "afac"; // highlight topic in navigation
 }
 
-<h2>SearchAdaptive</h2>
+<style>
+    .result-item {
+        padding-bottom:10px;
+        padding-top:10px;
+        border-bottom:dotted 1px #ccc;
+    }
+    .result-body {
+        padding-left:14px;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-md-8">
+
+        <h4>Search results for '@Model.SearchTerm'</h4>
+
+        <div class="row add-top add-bottom" id="search">
+            <div class="col-md-12 align-right">
+                <form action="@Url.Action("SearchAdaptive")" method="get">
+                    <div class="input-group">
+                        <input type="hidden" name="page" value="0" />
+                        <input type="text" class="form-control" name="SearchTerm" placeholder="One or more search terms" id="SearchTerm" value="@Model.SearchTerm" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default remove-margin" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @Html.Partial("_ResultPanePartial")
+
+    </div>
+    <div class="col-md-4">
+
+        @Html.Partial("_FacetsPartial")
+
+    </div>
+</div>

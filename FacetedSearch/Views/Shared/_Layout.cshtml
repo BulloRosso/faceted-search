@@ -20,6 +20,12 @@
     <!-- Icons-->
     <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet">
 
+    <style>
+        .add-top {
+            margin-top:20px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -34,28 +40,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Faceted Search</a>
+                <a class="navbar-brand" href="@Url.Action("Index")">Faceted Search</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Start</a></li>
-                    <li><a href="#about">Adaptive Facets</a></li>
-                    <li><a href="#contact">Checkbox Facets</a></li>
-                  
-                </ul>
-              
+                    <li @if (ViewBag.NavId == null) { ViewContext.Writer.WriteLine("class='active'");}><a href="@Url.Action("Index")">Start</a></li>
+                    <li @if (ViewBag.NavId == "afac") { ViewContext.Writer.WriteLine("class='active'"); }><a href="@Url.Action("SearchAdaptive")">Adaptive Facets</a></li>
+                    <li @if (ViewBag.NavId == "cfac") { ViewContext.Writer.WriteLine("class='active'"); }><a href="@Url.Action("SearchCheckboxed")">Checkbox Facets</a></li>
+                </ul>         
             </div><!--/.nav-collapse -->
         </div>
     </nav>
-
 
     <div class="container">
 
        @RenderBody()
 
     </div> <!-- /container -->
+    
     <!-- Bootstrap core JavaScript
-    ================================================== -->
+         ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="@Url.Content("~/Scripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>

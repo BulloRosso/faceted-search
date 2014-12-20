@@ -33,6 +33,11 @@ namespace FacetedSearch
         private void SetUpDemoData()
         {
 
+            if (BusinessLogic.SearchManager.IndexExists())
+            {
+                return; 
+            }
+
             string contentFileJSON = Server.MapPath("~/Content/testdata/");
 
             // read Authors
@@ -42,6 +47,9 @@ namespace FacetedSearch
                 string json = r.ReadToEnd();
                 List<BlogAuthor> items = JsonConvert.DeserializeObject<List<BlogAuthor>>(json);
 
+                // add to elasticsearch index
+                //
+                items.ForEach(i => BusinessLogic.SearchManager.Index(i));
             }
 
 
@@ -52,6 +60,9 @@ namespace FacetedSearch
                 string json = r.ReadToEnd();
                 List<BlogArticle> items = JsonConvert.DeserializeObject<List<BlogArticle>>(json);
 
+                // add to elasticsearch index
+                //
+                items.ForEach(i => BusinessLogic.SearchManager.Index(i));
             }
 
         }
