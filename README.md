@@ -2,8 +2,9 @@
 
 <h3>What is this all about?</h3>
 
-This is a MVC 4 Visual Studio 2013 project using Twitter Bootstrap to showcase a basic faceted search UI.
-It'll get you started with a typical search and solve some of the most common problems like paging, filtering and hit highlighting:
+<p>This is a MVC 4 Visual Studio 2013 project using Twitter Bootstrap to showcase a basic faceted search UI.</p>
+
+<p>It'll get you started with a typical search and solve some of the most common problems like paging, filtering and hit highlighting:</p>
 
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/sampleSearch.PNG" style="width:300px" />
 
