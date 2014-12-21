@@ -65,3 +65,12 @@ dreaded "no blog articles matched your search criteria" screen.
 In order to illustrate how easy demand management will be able to "destroy" your search experience I've included a "wrong" facet in the adaptive facets example: the date facet is just a simple date picker which allows the user to pick any date. This can easily lead to the "no blog articles matched your search criteria" screen.
 
 The "right" facet would be to include pre-compiled date ranges provided by elasticsearch's aggregations feature - this one is included in the checkbox facets example.
+
+<h3>Other common search features</h3>
+
+Still to do...
+
+<ul>
+   <li>"Did you mean..?" for typos</li>
+   <li>Auto complete feature in the search input box</li>
+</ul>
