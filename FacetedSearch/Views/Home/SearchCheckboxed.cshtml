@@ -1,6 +1,48 @@
-﻿@{
-    ViewBag.Title = "Checkbox Facets - Faceted Search Demo";
-    ViewBag.NavId = "cfac";
+﻿@using FacetedSearch.Models
+@model SearchResultViewModel
+@{
+    ViewBag.Title = "Adaptive Facets - Faceted Search Demo";
+    ViewBag.NavId = "cfac"; // highlight topic in navigation
 }
 
-<h2>SearchCheckboxed</h2>
+<style>
+    .result-item {
+        padding-bottom: 15px;
+        padding-top: 15px;
+        border-bottom: dotted 1px #ccc;
+    }
+
+    .result-body {
+        padding-left: 14px;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-md-7">
+
+        <h4>Search results for '@Model.SearchTerm'</h4>
+
+        <div class="row add-top add-bottom" id="search">
+            <div class="col-md-12 align-right">
+                <form action="@Url.Action("SearchCheckboxed")" method="get">
+                    <div class="input-group">
+                        <input type="hidden" name="page" value="0" />
+                        <input type="text" class="form-control" name="SearchTerm" placeholder="One or more search terms" id="SearchTerm" value="@Model.SearchTerm" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default remove-margin" type="submit"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @Html.Partial("_ResultPanePartial")
+
+    </div>
+    <div class="col-md-4 col-lg-offset-1">
+
+        @Html.Partial("_CheckboxFacetsPartial")
+
+    </div>
+</div>

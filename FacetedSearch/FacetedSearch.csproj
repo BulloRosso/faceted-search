@@ -231,6 +231,7 @@
     <Content Include="Views\Home\SearchCheckboxed.cshtml" />
     <Content Include="Views\Home\_FacetsPartial.cshtml" />
     <Content Include="Views\Home\_ResultPanePartial.cshtml" />
+    <Content Include="Views\Home\_CheckboxFacetsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

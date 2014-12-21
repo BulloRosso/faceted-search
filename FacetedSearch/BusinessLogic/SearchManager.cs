@@ -114,7 +114,15 @@ namespace FacetedSearch.BusinessLogic
         }
 
 
-
+        /// <summary>
+        ///  Drilldown strategy preferable for AND combinations between the facets
+        /// </summary>
+        /// <param name="SearchTerm"></param>
+        /// <param name="page"></param>
+        /// <param name="filters"></param>
+        /// <param name="_pageSize"></param>
+        /// <param name="_maxResults"></param>
+        /// <returns></returns>
         public static SearchResultViewModel SearchArticle(string SearchTerm, int page, Dictionary<string, string> filters, int _pageSize, int _maxResults)
         {
             if (SearchTerm == null)
@@ -188,6 +196,85 @@ namespace FacetedSearch.BusinessLogic
             return new SearchResultViewModel() { Result = results, Filters = filters, SearchTerm = SearchTerm };
         }
 
+        /// <summary>
+        /// Drilldown strategy preferable for OR combinations between the facets
+        /// </summary>
+        /// <param name="SearchTerm"></param>
+        /// <param name="page"></param>
+        /// <param name="filters"></param>
+        /// <param name="_pageSize"></param>
+        /// <param name="_maxResults"></param>
+        /// <returns></returns>
+        public static SearchResultViewModel SearchArticleCheckboxed(string SearchTerm, int page, Dictionary<string, string> filters, int _pageSize, int _maxResults)
+        {
+            if (SearchTerm == null)
+            {
+                SearchTerm = ""; // never mind
+            }
+
+            Dictionary<string, string> fieldMappings = new Dictionary<string, string>()
+            {
+                { "language", "languageCode"},
+                { "topics", "topics" }
+            };
+
+
+            List<FilterContainer> termFilters = new List<FilterContainer>();
+            foreach (string key in filters.Keys)
+            {
+                if (!fieldMappings.ContainsKey(key))
+                {
+                    continue; // ignore date range
+                }
+
+                foreach (string subkey in filters[key].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    termFilters.Add(new TermFilter()
+                    {
+                        Field = fieldMappings[key],
+                        Value = subkey
+                    });
+                }
+
+            }
+
+            List<QueryContainer> searchQueryList = new List<QueryContainer>();
+
+            if (filters.ContainsKey("dateRange"))
+            {
+                searchQueryList.Add(Query<BlogArticle>.Range(r => r.OnField("timestamp")
+                                                                  .Greater(DateTime.Parse(filters["dateRange"])
+                                                                  .AddDays(1), "yyyy-MM-dd")));
+            }
+
+            // if there are more than one word --> concat using AND 
+            //
+            string[] splitSearch = SearchTerm.Split(' ');
+
+
+            foreach (var strText in splitSearch)
+            {
+                searchQueryList.Add(Query<BlogArticle>.Prefix("_all", strText.ToLower())); // prefix finds incomplete words - use .Term for an exact match
+            }
+
+
+            var results = GetClient().Search<BlogArticle>(s => s
+
+                                             .Aggregations(a => a
+                                               .Terms("language", o => o.Field(f => f.LanguageCode).Size(10))
+                                               .Terms("topics", o => o.Field(f => f.Topics).Size(10))
+                                              )
+                                             .Query(sq => sq.Bool(b => b.Must(searchQueryList.ToArray())))
+                                             .Filter(f => f.And(termFilters.ToArray()))
+                                             .Highlight(h => h.PreTags("<span class='highlight'>")
+                                             .PostTags("</span>")
+                                             .OnFields(new Action<HighlightFieldDescriptor<BlogArticle>>[] { _ => _.OnField(c => c.Teaser).FragmentSize(100).NumberOfFragments(1) })
+                                             ).Size(_maxResults).Skip(page * _pageSize).Take(_pageSize)
+                                           );
+
+
+            return new SearchResultViewModel() { Result = results, Filters = filters, SearchTerm = SearchTerm };
+        }
 
     }
 

@@ -92,8 +92,22 @@ namespace FacetedSearch.Controllers
         /// <returns></returns>
         public ActionResult SearchCheckboxed(string SearchTerm)
         {
-            return View();
+            // Pagination
+            //
+            int page = 0;
+            if (Request.Params["Page"] != null)
+            {
+                page = Convert.ToInt32(Request.Params["Page"]);
+            }
+
+            // elasticsearch 
+            //
+            SearchResultViewModel vm = BusinessLogic.SearchManager.SearchArticleCheckboxed(SearchTerm, page, GetCheckboxes(), PageSize, MaxResults);
+
+            return View(vm);
         }
+
+        #region handling of state changes of facets 
 
         private Dictionary<string, string> GetFilters()
         {
@@ -103,6 +117,16 @@ namespace FacetedSearch.Controllers
             }
 
             return (Dictionary<string, string>)Session["Filters"];
+        }
+
+        private Dictionary<string, string> GetCheckboxes()
+        {
+            if (Session["Checkboxes"] == null)
+            {
+                Session["Checkboxes"] = new Dictionary<string, string>();
+            }
+
+            return (Dictionary<string, string>)Session["Checkboxes"];
         }
 
         /// <summary>
@@ -134,7 +158,7 @@ namespace FacetedSearch.Controllers
         /// <returns></returns>
         public ActionResult RemoveFilter(string SearchTerm, string FilterName, string FilterValue)
         {
-            Dictionary<string, string> filters = (Dictionary<string, string>)Session["Filters"];
+            Dictionary<string, string> filters = GetFilters();
 
             if (filters.ContainsKey(FilterName))
             {
@@ -144,5 +168,56 @@ namespace FacetedSearch.Controllers
             return RedirectToAction("SearchAdaptive", new { SearchTerm = SearchTerm });
         }
 
+        /// <summary>
+        /// Add facet checkbox and redirect to new search result
+        /// </summary>
+        /// <param name="SearchTerm"></param>
+        /// <param name="FilterName"></param>
+        /// <param name="FilterValue"></param>
+        /// <returns></returns>
+        public ActionResult Checkbox(string SearchTerm, string FilterName, string FilterValue)
+        {
+
+            Dictionary<string, string> filters = GetCheckboxes();
+
+            if (!filters.ContainsKey(FilterName))
+            {
+                filters.Add(FilterName, "," + FilterValue);
+            }
+            else
+            {
+                filters[FilterName] = filters[FilterName] + "," + FilterValue;
+            }
+
+            return RedirectToAction("SearchCheckboxed", new { SearchTerm = SearchTerm });
+        }
+
+        /// <summary>
+        /// Remove facet checkbox and redirect to new search result
+        /// </summary>
+        /// <param name="SearchTerm"></param>
+        /// <param name="FilterName"></param>
+        /// <param name="FilterValue"></param>
+        /// <returns></returns>
+        public ActionResult RemoveCheckbox(string SearchTerm, string FilterName, string FilterValue)
+        {
+            Dictionary<string, string> filters = GetCheckboxes();
+
+            if (filters.ContainsKey(FilterName))
+            {
+                if (filters[FilterName] == "," + FilterValue)
+                {
+                    filters.Remove(FilterName);
+                }
+                else
+                {
+                    filters[FilterName] = filters[FilterName].Replace("," + FilterValue, "");
+                }
+            }
+
+            return RedirectToAction("SearchCheckboxed", new { SearchTerm = SearchTerm });
+        }
+
+        #endregion
     }
 }

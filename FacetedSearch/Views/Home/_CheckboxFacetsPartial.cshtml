@@ -1,0 +1,123 @@
+﻿@using FacetedSearch.Models
+@using FacetedSearch.DataStore
+@using Nest
+@model SearchResultViewModel
+@{
+    ViewBag.Title = "_FacetsPartial";
+}
+
+<!-- Date range facet -->
+@if (!Model.Filters.Keys.Contains("dateRange")) { 
+<div class="context-box">
+    <h4><i class="fa fa-calendar fa-fw"></i> Date</h4>
+    <div style="padding-left:18px;padding-top:10px;padding-bottom:20px;padding-right:20px;">
+        <input type="text" name="dateRange" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="Newer than...">
+    </div>
+</div>
+}
+
+<!-- Regular facets-->
+
+@functions {
+
+    public bool ContainsItemKey(Dictionary<string,string> Filters, string FacetName, string FacetValue)
+    {
+        if (!Filters.ContainsKey(FacetName))
+        {
+            return false;
+        }
+
+        return Filters[FacetName].Contains(FacetValue);
+
+    }
+
+}
+
+@foreach (string facKey in Model.Result.Aggregations.Keys)
+{
+
+    Bucket fac = (Bucket)Model.Result.Aggregations[facKey];
+
+    if (fac.Items.Count() < 2)
+    {
+        continue;   // show only if there's a choice
+    }
+
+    <div class="context-box">
+
+        @switch (facKey)
+        {
+            case "language":
+
+                <h4><i class="fa fa-comment-o fw"></i> Language</h4>
+                <div class="alert alert-context remove-bottom remove-top-padding">
+                    <div class="list-group remove-bottom">
+                        @foreach (KeyItem x in fac.Items)
+                        {
+                            string icon = "fa fa-square-o";
+                            string url = Url.Action("Checkbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = x.Key });
+                            if (ContainsItemKey(Model.Filters, facKey, x.Key))
+                            {
+                                icon = "fa fa-check-square";
+                                url = Url.Action("RemoveCheckbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = x.Key });
+                            }
+                            
+                            <a href="@url" class="list-group-item">
+                                <i class="@icon"></i>
+                                @Entities.GetTitle(Entities.EntityTypes.Language, x.Key)
+                                <span class="text-muted">[@x.DocCount]</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                        break;
+
+            case "topics":
+
+            <h4><i class="fa fa-tags fw"></i> Topics</h4>
+            <div class="alert alert-context remove-bottom remove-top-padding">
+                <div class="list-group remove-bottom">
+                    @foreach (KeyItem x in fac.Items)
+                    {
+
+                        string icon = "fa fa-square-o";
+                        string url = Url.Action("Checkbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = x.Key });
+                        if (ContainsItemKey(Model.Filters, facKey, x.Key))
+                        {
+                            icon = "fa fa-check-square";
+                            url = Url.Action("RemoveCheckbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = x.Key });
+                        }
+
+                        <a href="@url" class="list-group-item">
+                            <i class="@icon"></i>
+                            @Entities.GetTitle(Entities.EntityTypes.Topic, x.Key)
+                            <span class="text-muted">[@x.DocCount]</span>
+                        </a>
+                    }
+                </div>
+            </div>
+
+                    break;
+        }
+    </div>
+}
+
+<script type="text/javascript">
+
+
+    $('.datepicker').datepicker({
+        language: 'en', autoclose: true, format: 'yyyy-mm-dd'
+
+    }
+    ).on('changeDate', function (ev) {
+
+        var urlAction = "@Url.Action("Filter", new { SearchTerm = Model.SearchTerm, FilterName = "filterName", FilterValue = "filterValue" })";
+        urlAction = urlAction.replace("filterName", $(this).attr("name")).replace("filterValue", $(this).val()).replace(/&amp;/g, '&');;
+
+
+        document.location.href = urlAction;
+    });
+
+
+</script>
