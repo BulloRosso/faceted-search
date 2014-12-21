@@ -20,7 +20,7 @@ To simplyfy things you don't need any kind of database - sample data is included
 
 <h3>Installing Elasticsearch</h3>
 
-<a href="http://www.elasticsearch.org/download/">Download</a> and install elasicsearch. You don't have to configure anything - just start <code>/bin/elasticsearch.bat</code> and the elasticsearch engine starts to listen on its default port 9200. This port is preconfigured in the Visual Studio Project.
+<a href="http://www.elasticsearch.org/download/">Download</a> and install elasticsearch. You don't have to configure anything - just start <code>/bin/elasticsearch.bat</code> and the elasticsearch engine starts to listen on its default port 9200. This port is preconfigured in the Visual Studio Project.
 
 <h3>Overview</h3>
 
@@ -35,3 +35,33 @@ While we'd be able to send/receive plain JSON data structures to communicate wit
 You can search blog entries of different languages which are assigned to several topics (like "Fashion &amp; Lifestyle", "Music &amp; Entertainment").
 
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/BlogArticleClass.PNG"  />
+
+<h3>Drilldown strategies</h3>
+
+After entering one or more search terms in the search box elasticsearch returns a rich set of results. By using aggregations (elasticsearchs facets on steroids) different options to narrow the results are available:
+
+<ul>
+   <li>Language of the blog article</li>
+   <li>Topic of the blog article</li>
+   <li>Date the blog article was created</li>
+</ul>
+
+Depending on the problem domain you can choose between one of the following drilldown strategies:
+
+<ol>
+    <li><strong>Adaptive facets</strong><br/>
+    Each choice will lead to a new resultset and all facets will be calculated upon the new results. By using this
+    approach it is ensured there is always at least one result in the result set. 
+    </li>
+   <li><strong>Checkbox facets</strong><br/>
+Each choice will lead to a new resultset but the initial facets will remain unchanged. This strategy will enable
+the user to create OR queries like "all articles in english OR french language" - but it's easy to end up with the
+dreaded "no blog articles matched your search criteria" screen.
+</li>
+</ol>
+
+<h3>Don't let demand managers spoil your search experience</h3>
+
+In order to illustrate how easy demand management will be able to "destroy" your search experience I've included a "wrong" facet in the adaptive facets example: the date facet is just a simple date picker which allows the user to pick any date. This can easily lead to the "no blog articles matched your search criteria" screen.
+
+The "right" facet would be to include pre-compiled date ranges provided by elasticsearch's aggregations feature - this one is included in the checkbox facets example.
