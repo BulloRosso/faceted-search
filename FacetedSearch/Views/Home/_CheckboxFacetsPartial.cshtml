@@ -6,16 +6,6 @@
     ViewBag.Title = "_FacetsPartial";
 }
 
-<!-- Date range facet -->
-@if (!Model.Filters.Keys.Contains("dateRange")) { 
-<div class="context-box">
-    <h4><i class="fa fa-calendar fa-fw"></i> Date</h4>
-    <div style="padding-left:18px;padding-top:10px;padding-bottom:20px;padding-right:20px;">
-        <input type="text" name="dateRange" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="Newer than...">
-    </div>
-</div>
-}
-
 <!-- Regular facets-->
 
 @functions {
@@ -47,6 +37,33 @@
 
         @switch (facKey)
         {
+            case "datehisto":
+
+                <h4><i class="fa fa-calendar fw"></i> Year published</h4>
+                <div class="alert alert-context remove-bottom remove-top-padding">
+                    <div class="list-group remove-bottom">
+                        @foreach (HistogramItem x in fac.Items)
+                        {
+                            string key = x.Date.Year.ToString();
+                            string icon = "fa fa-square-o";
+                            string url = Url.Action("Checkbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = key });
+                            if (ContainsItemKey(Model.Filters, facKey, key))
+                            {
+                                icon = "fa fa-check-square";
+                                url = Url.Action("RemoveCheckbox", new { SearchTerm = Model.SearchTerm, FilterName = facKey, FilterValue = key });
+                            }
+
+                            <a href="@url" class="list-group-item">
+                                <i class="@icon"></i>
+                                @key
+                                <span class="text-muted">[@x.DocCount]</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                        break;
+
             case "language":
 
                 <h4><i class="fa fa-comment-o fw"></i> Language</h4>

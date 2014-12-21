@@ -261,11 +261,33 @@ namespace FacetedSearch.BusinessLogic
 
             List<QueryContainer> searchQueryList = new List<QueryContainer>();
 
-            if (filters.ContainsKey("dateRange"))
+            if (filters.ContainsKey("datehisto"))
             {
-                searchQueryList.Add(Query<BlogArticle>.Range(r => r.OnField("timestamp")
-                                                                  .Greater(DateTime.Parse(filters["dateRange"])
-                                                                  .AddDays(1), "yyyy-MM-dd")));
+                string[] arr = filters["datehisto"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (arr.Length == 1)
+                {
+                    termFilters.Add(Filter<BlogArticle>.Range(r => r.OnField("timestamp")
+                                                                      .GreaterOrEquals(DateTime.Parse(arr[0] + "-01-01"), "yyyy-MM-dd")
+                                                                      .LowerOrEquals(DateTime.Parse(arr[0] + "-12-31"), "yyyy-MM-dd"))
+                                                                      );
+                }
+                else
+                {
+                    // OR between options within a filter + AND between all filter facets
+                    //
+                    List<FilterContainer> subTermFilters = new List<FilterContainer>();
+
+                    foreach (string subkey in arr)
+                    {
+                        subTermFilters.Add(Filter<BlogArticle>.Range(r => r.OnField("timestamp")
+                                                                      .GreaterOrEquals(DateTime.Parse(subkey + "-01-01"), "yyyy-MM-dd")
+                                                                      .LowerOrEquals(DateTime.Parse(subkey + "-12-31"), "yyyy-MM-dd"))
+                                                                      );
+                    }
+
+                    termFilters.Add(new FilterDescriptor<BlogArticle>().Or(subTermFilters.ToArray()));
+                }
             }
 
             // if there are more than one word --> concat using AND 
@@ -284,6 +306,9 @@ namespace FacetedSearch.BusinessLogic
                                              .Aggregations(a => a
                                                .Terms("language", o => o.Field(f => f.LanguageCode).Size(10))
                                                .Terms("topics", o => o.Field(f => f.Topics).Size(10))
+                                               .DateHistogram("datehisto", o => o.Field(f => f.Timestamp)
+                                               .Interval("year")
+                                               .MinimumDocumentCount(1))
                                               )
                                              .Query(sq => sq.Bool(b => b.Should(searchQueryList.ToArray())))
                                              .Filter(f => f.And(termFilters.ToArray()))
