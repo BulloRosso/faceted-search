@@ -20,7 +20,7 @@ To simplyfy things you don't need any kind of database - sample data is included
 
 <h3>Installing Elasticsearch</h3>
 
-<a href="http://www.elasticsearch.org/download/">Download</a> and install elasicsearch. You don't have to configure anything - just start <code>/bin/elasticsearch.bat</code> and the elasticsearch engine starts to listen on its default port 9200. This port is preconfigured in the Visual Studio Project.
+<a href="http://www.elasticsearch.org/download/">Download</a> and install elasticsearch. You don't have to configure anything - just start <code>/bin/elasticsearch.bat</code> and the elasticsearch engine starts to listen on its default port 9200. This port is preconfigured in the Visual Studio Project.
 
 <h3>Overview</h3>
 
