@@ -56,6 +56,12 @@ Depending on the problem domain you can choose between one of the following dril
    <li><strong>Checkbox facets</strong><br/>
 Each choice will lead to a new resultset but the initial facets will remain unchanged. This strategy will enable
 the user to create OR queries like "all articles in english OR french language" - but it's easy to end up with the
-dreaded "no blog articles matched you search criteria" screen.
+dreaded "no blog articles matched your search criteria" screen.
 </li>
 </ol>
+
+<h3>Don't let demand managers spoil your search experience</h3>
+
+In order to illustrate how easy demand management will be able to "destroy" your search experience I've included a "wrong" facet in the adaptive facets example: the date facet is just a simple date picker which allows the user to pick any date. This can easily lead to the "no blog articles matched your search criteria" screen.
+
+The "right" facet would be to include pre-compiled date ranges provided by elasticsearch's aggregations feature - this one is included in the checkbox facets example.
