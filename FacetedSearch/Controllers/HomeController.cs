@@ -85,6 +85,32 @@ namespace FacetedSearch.Controllers
             return Content("Index reset!");
         }
 
+        public ActionResult RedirectToArticle(string Id)
+        {
+            return Content("In this method you would typically count the clicked search result items and redirect to the final URL.");
+        }
+
+        /// <summary>
+        /// Create a new test article
+        /// </summary>
+        /// <param name="article"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult CreateArticle(BlogArticle article)
+        {
+            article.Id = Guid.NewGuid().ToString();
+            article.BlogAuthorId = "auth-1";
+            
+            if (article.Timestamp == null)
+            {
+                article.Timestamp = DateTime.Now;
+            }
+
+            BusinessLogic.SearchManager.Index(article);
+
+            return Json(new { status = "OK" });
+        }
+
         /// <summary>
         /// Second search scenario: simple filter
         /// </summary>

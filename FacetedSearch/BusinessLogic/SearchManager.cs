@@ -160,7 +160,7 @@ namespace FacetedSearch.BusinessLogic
             {
                 searchQueryList.Add(Query<BlogArticle>.Range(r => r.OnField("timestamp")
                                                                   .Greater(DateTime.Parse(filters["dateRange"])
-                                                                  .AddDays(1), "yyyy-MM-dd")));
+                                                                  , "yyyy-MM-dd")));
             }
 
             // if there are more than one word --> concat using AND 

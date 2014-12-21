@@ -47,8 +47,10 @@
 
         <h4 class="text-info" style="margin-top:40px;"><i class="fa fa-plus"></i> Add some data</h4>
         <p class="text-muted">
-            Add some <a href="" class="btn btn-xs btn-default">Blog articles</a> or <a href="#" class="btn btn-xs btn-default">bloggers</a> to the index.
+            Add a new <a href="#" onclick="$('#frmArticle').slideDown('slow');" class="btn btn-xs btn-default">Blog article</a> to the index.
         </p>
+
+        @Html.Partial("_FormArticlePartial")
 
     </div>
     <div class="col-md-4">
@@ -76,8 +78,10 @@
         <div class="alert alert-info add-top">
             <strong><i class="fa fa-info-circle"></i> Demo data</strong><br /> is defined in the content directory as JSON files.
         
-            <a href="@Url.Action("ResetIndex")" class="btn btn-default btn-sm pull-right add-top" title="Clears all your additions to the index">Reset Index</a>
-            <br style="clear:both;" />
+            <div class="text-right">
+                <a href="@Url.Action("ResetIndex")" class="btn btn-default btn-sm add-top" title="Clears all your additions to the index">Reset Index</a>
+            </div>
+            
         </div>
     </div>
 </div>

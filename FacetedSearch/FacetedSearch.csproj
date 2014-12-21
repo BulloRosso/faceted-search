@@ -232,6 +232,7 @@
     <Content Include="Views\Home\_FacetsPartial.cshtml" />
     <Content Include="Views\Home\_ResultPanePartial.cshtml" />
     <Content Include="Views\Home\_CheckboxFacetsPartial.cshtml" />
+    <Content Include="Views\Home\_FormArticlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
