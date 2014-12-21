@@ -227,14 +227,35 @@ namespace FacetedSearch.BusinessLogic
                     continue; // ignore date range
                 }
 
-                foreach (string subkey in filters[key].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+               
+                string[] arr = filters[key].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (arr.Length == 1)
                 {
                     termFilters.Add(new TermFilter()
                     {
                         Field = fieldMappings[key],
-                        Value = subkey
+                        Value = arr[0]
                     });
                 }
+                else
+                {
+                    // OR between options within a filter + AND between all filter facets
+                    //
+                    List<FilterContainer> subTermFilters = new List<FilterContainer>();
+
+                    foreach (string subkey in arr)
+                    {
+                        subTermFilters.Add(new TermFilter()
+                        {
+                            Field = fieldMappings[key],
+                            Value = subkey
+                        });
+                    }
+
+                    termFilters.Add(new FilterDescriptor<BlogArticle>().Or(subTermFilters.ToArray()));
+                }
+               
 
             }
 
@@ -264,7 +285,7 @@ namespace FacetedSearch.BusinessLogic
                                                .Terms("language", o => o.Field(f => f.LanguageCode).Size(10))
                                                .Terms("topics", o => o.Field(f => f.Topics).Size(10))
                                               )
-                                             .Query(sq => sq.Bool(b => b.Must(searchQueryList.ToArray())))
+                                             .Query(sq => sq.Bool(b => b.Should(searchQueryList.ToArray())))
                                              .Filter(f => f.And(termFilters.ToArray()))
                                              .Highlight(h => h.PreTags("<span class='highlight'>")
                                              .PostTags("</span>")
