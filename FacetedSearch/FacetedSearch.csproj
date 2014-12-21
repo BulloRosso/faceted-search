@@ -137,6 +137,7 @@
     <Content Include="Content\datepicker3.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\BlogArticleClass.PNG" />
     <Content Include="Content\img\elasticsearch-logo.png" />
     <Content Include="Content\img\overview.PNG" />
     <Content Include="Content\img\sampleSearch.PNG" />
@@ -154,6 +155,7 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\testdata\authors.json" />
     <Content Include="Content\testdata\articles.json" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
