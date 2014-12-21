@@ -35,3 +35,27 @@ While we'd be able to send/receive plain JSON data structures to communicate wit
 You can search blog entries of different languages which are assigned to several topics (like "Fashion &amp; Lifestyle", "Music &amp; Entertainment").
 
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/BlogArticleClass.PNG"  />
+
+<h3>Drilldown strategies</h3>
+
+After entering one or more search terms in the search box elasticsearch returns a rich set of results. By using aggregations (elasticsearchs facets on steroids) different options to narrow the results are available:
+
+<ul>
+   <li>Language of the blog article</li>
+   <li>Topic of the blog article</li>
+   <li>Date the blog article was created</li>
+</ul>
+
+Depending on the problem domain you can choose between one of the following drilldown strategies:
+
+<ol>
+    <li><strong>Adaptive facets</strong><br/>
+    Each choice will lead to a new resultset and all facets will be calculated upon the new results. By using this
+    approach it is ensured there is always at least one result in the result set. 
+    </li>
+   <li><strong>Checkbox facets</strong><br/>
+Each choice will lead to a new resultset but the initial facets will remain unchanged. This strategy will enable
+the user to create OR queries like "all articles in english OR french language" - but it's easy to end up with the
+dreaded "no blog articles matched you search criteria" screen.
+</li>
+</ol>
