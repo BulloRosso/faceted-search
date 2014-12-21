@@ -18,6 +18,12 @@ To simplyfy things you don't need any kind of database - sample data is included
 
 </ul>
 
+<h3>Installing Elasticsearch</h3>
+
+<a href="http://www.elasticsearch.org/download/">Download</a> and install elasicsearch. You don't have to configure anything - just start /bin/elasticsearch.bat and the elasticsearch engine starts to listen on its default port 9200. This port is preconfigured in the Visual Studio Project.
+
 <h3>Overview</h3>
+
+Elasticsearch is somewhat similar to mongoDB: both are self contained applications which don't require much administrative efforts (from a developer's perspective). So for example you don't have to set up users or databases before running the Visual Studio Project.
 
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/overview.PNG" style="width:300px" />
