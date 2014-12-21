@@ -29,3 +29,9 @@ Elasticsearch is somewhat similar to mongoDB: both are self contained applicatio
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/overview.PNG" style="width:300px" />
 
 While we'd be able to send/receive plain JSON data structures to communicate with the elasticsearch engine we'll make use of the Nest project: Nest is a fluent wrapper for elasticsearch and allows us to use LINQ or C#-Types without too much hassle with technical details.
+
+<h3>Demo Domain Data</h3>
+
+You can search blog entries of different languages which are assigned to several topics (like "Fashion &amp; Lifestyle", "Music &amp; Entertainment").
+
+<img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/BlogArticleClass.PNG"  />
