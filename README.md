@@ -27,3 +27,5 @@ To simplyfy things you don't need any kind of database - sample data is included
 Elasticsearch is somewhat similar to mongoDB: both are self contained applications which don't require much administrative efforts (from a developer's perspective). So for example you don't have to set up users or databases before running the Visual Studio Project.
 
 <img src="https://raw.githubusercontent.com/BulloRosso/faceted-search/master/FacetedSearch/Content/img/overview.PNG" style="width:300px" />
+
+While we'd be able to send/receive plain JSON data structures to communicate with the elasticsearch engine we'll make use of the Nest project: Nest is a fluent wrapper for elasticsearch and allows us to use LINQ or C#-Types without too much hassle with technical details.
