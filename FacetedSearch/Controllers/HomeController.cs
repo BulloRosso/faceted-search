@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using FacetedSearch.Models;
 using System.IO;
 using Newtonsoft.Json;
+using Nest;
 
 namespace FacetedSearch.Controllers
 {
@@ -85,9 +86,39 @@ namespace FacetedSearch.Controllers
             return Content("Index reset!");
         }
 
+        /// <summary>
+        /// Fake method
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public ActionResult RedirectToArticle(string Id)
         {
             return Content("In this method you would typically count the clicked search result items and redirect to the final URL.");
+        }
+
+        /// <summary>
+        /// AutoComplete function (phrase, term or completion in elasticsarch)
+        /// </summary>
+        /// <param name="SearchTerm"></param>
+        /// <returns></returns>
+        public ActionResult AutoSuggest(string SearchTerm)
+        {
+            // use phrase strategy
+            //
+            ISuggestResponse result = BusinessLogic.SearchManager.AutoSuggest(SearchTerm);
+
+             List<object> lst = new List<object>(); // { new {  name = "test"} , new { name = "fest" } , new { name = "nest" } };
+
+             var sugg = result.Suggestions["completion"].First().Options;
+             if (sugg.Count() > 0)
+             {
+                 foreach (SuggestOption opt in sugg)
+                 {
+                     lst.Add(new { name = opt.Text });
+                 }
+             }
+           
+            return Json(new { search_results = lst },JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

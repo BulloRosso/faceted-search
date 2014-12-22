@@ -20,7 +20,7 @@
 
                 <form action="@Url.Action("SearchAdaptive")" method="Get">
                     <div class="input-group">
-                        <input type="text" name="SearchTerm" placeholder="One or more search terms" class="form-control" />
+                        <input type="text" name="SearchTerm" autocomplete="off" placeholder="One or more search terms" class="form-control t-ahead" />
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                         </span>
@@ -34,7 +34,7 @@
 
                 <form action="@Url.Action("SearchCheckboxed")" method="Get">
                     <div class="input-group">
-                        <input type="text" name="SearchTerm" placeholder="One or more search terms" class="form-control" />
+                        <input type="text" name="SearchTerm" autocomplete="off" placeholder="One or more search terms" class="form-control t-ahead" />
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                         </span>
@@ -43,6 +43,28 @@
 
             </div>
         </div>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $('.t-ahead').typeahead({
+                    source: function (query, process) {
+                       
+                        return $.ajax({
+                            url:'@Url.Action("AutoSuggest")',
+                            data: { 
+                                SearchTerm:  query
+                            },
+                            success: function (data) {
+                                return process(data.search_results);
+                            },
+                            cache: false
+                        });
+                    }
+                });
+            })
+        </script>
         
 
         <h4 class="text-info" style="margin-top:40px;"><i class="fa fa-plus"></i> Add some data</h4>

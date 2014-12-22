@@ -71,7 +71,27 @@ namespace FacetedSearch.BusinessLogic
            
             client.DeleteIndex(IndexName);
 
-            client.CreateIndex(IndexName);
+            client.CreateIndex(IndexName
+                 // prepare index for autocomplete on the fields Title and Teaser
+                 //,descriptor => descriptor.AddMapping<BlogArticle>(
+                 //       m => m.Properties(
+                 //           p => p.Completion(s => s
+                 //               .Name(n => n.Title)
+                 //               .IndexAnalyzer("simple")
+                 //               .SearchAnalyzer("simple")
+                 //               .MaxInputLength(50)
+                 //               .Payloads(true)
+                 //               .PreserveSeparators()
+                 //               .PreservePositionIncrements()).
+                 //               Completion(s => s.Name(n => n.Teaser)
+                 //               .IndexAnalyzer("simple")
+                 //               .SearchAnalyzer("simple")
+                 //               .MaxInputLength(50)
+                 //               .Payloads(true)
+                 //               .PreserveSeparators()
+                 //               .PreservePositionIncrements())
+                 //           ))
+               );
 
             // treat EMail as a word (do not strip to single fields: ralph@bla.com -- would be in the index --> ralph bla com) 
             //
@@ -113,6 +133,33 @@ namespace FacetedSearch.BusinessLogic
             return new ElasticClient(settings);
         }
 
+        /// <summary>
+        /// Auto suggest on fields title and teaser
+        /// </summary>
+        /// <param name="term"></param>
+        /// <returns></returns>
+        public static ISuggestResponse AutoSuggest(string SearchTerm)
+        {
+            // depending on your map --> index --> query configuraion there are different methods to get suggestions:
+            //
+            // a.) my favourite
+            //
+            //SearchDescriptor<BlogArticle> descriptor = new SearchDescriptor<BlogArticle>();
+            //descriptor = descriptor.SuggestCompletion("suggest", c => c.OnField("title").Text(SearchTerm));
+
+            //var ... = GetClient().Search<BlogArticle>(s => descriptor);
+
+            // b.) common
+            //
+            return GetClient().Suggest<BlogArticle>(s => s.Phrase("completion", f => f.OnField("title")
+                                                                                    .GramSize(1)
+                                                                                    .Size(5)
+                                                                                    .MaxErrors((decimal)0.5)
+                                                                                    .DirectGenerator(g => g.MinWordLength(3)
+                                                                                                            .OnField("title")
+                                                                                                            .SuggestMode(SuggestMode.Always))
+                                                                                    .Text(SearchTerm)));
+        }
 
         /// <summary>
         ///  Drilldown strategy preferable for AND combinations between the facets

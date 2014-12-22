@@ -34,7 +34,7 @@
         BlogAuthorId: "auth-2",
         LanguageCode: "de",
         Timestamp: "2014-06-03",
-        Title: "Neue Farben für Männer im Herbst",
+        Title: "Neue Farben für Frauen im Herbst",
         Teaser: "Blau ist die neue Trendfarbe im Herbst.",
         Topics:  ["Fashion"]
     },
@@ -44,7 +44,7 @@
         BlogAuthorId: "auth-2",
         LanguageCode: "de",
         Timestamp: "2014-05-03",
-        Title: "Neue Farben für Männer im Herbst",
+        Title: "Neue Farben im Angebot",
         Teaser: "Blau ist die neue Trendfarbe im Herbst.",
         Topics:  ["Geek"]
     },
@@ -54,7 +54,7 @@
         BlogAuthorId: "auth-2",
         LanguageCode: "de",
         Timestamp: "2014-04-03",
-        Title: "Neue Farben für Männer im Herbst",
+        Title: "Neue Farben sind jetzt erhältlich!",
         Teaser: "Blau ist die neue Trendfarbe im Herbst.",
         Topics:  ["Social"]
     },
@@ -74,7 +74,7 @@
         BlogAuthorId: "auth-2",
         LanguageCode: "de",
         Timestamp: "2014-02-03",
-        Title: "Neue Farben für Männer im Herbst",
+        Title: "Neue Farben gesichtet!",
         Teaser: "Blau ist die neue Trendfarbe im Herbst.",
         Topics:  ["Fashion", "Social"]
     },
