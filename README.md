@@ -66,11 +66,19 @@ In order to illustrate how easy demand management will be able to "destroy" your
 
 The "right" facet would be to include pre-compiled date ranges provided by elasticsearch's aggregations feature - this one is included in the checkbox facets example.
 
+<h3>Auto complete feature in the search input box</h3>
+
+Most features of a successful search depend on the design of the process of MAP / INDEX / QUERY. Though there
+is a auto suggest feature wired to both search input boxes at the start page - it doesn't deliver impressive
+suggestions with the demo data.
+
+Keep in mind to adjust mapping and indexing to your language and problem domain inside the <code>SearchManager</code> class.
+
 <h3>Other common search features</h3>
 
 Still to do...
 
 <ul>
    <li>"Did you mean..?" for typos</li>
-   <li>Auto complete feature in the search input box</li>
+  
 </ul>
