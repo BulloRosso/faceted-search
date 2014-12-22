@@ -82,3 +82,11 @@ Still to do...
    <li>"Did you mean..?" for typos</li>
   
 </ul>
+
+<h3>A real world production search...</h3>
+
+...wouldn't use the simple post back/page refresh mechanics which is currently implemented to keep things simple. You would use <strong>angularJS</strong> expecially for checkbox facet scenarios.
+
+To keep facets <strong>really responsive</strong> you would wrap the whole facet section in an off-canvas section e. g. by using the <code>slidebars</code> plugin.
+
+For best performance you would completely <strong>denormalize data</strong> and use one index per language. Currently data is not denormalized and a fake data store class is used to resolve ids. You wouldn't do this in your production code - especially if you've got plenty of data in your index.
